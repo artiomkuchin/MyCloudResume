@@ -5,9 +5,15 @@ on:
     branches:
       - main
 
+env:
+  NODE_VERSION: '16.x'
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
 
     steps:
     - uses: actions/checkout@v2
@@ -20,4 +26,4 @@ jobs:
     - name: Install dependencies
       run: pip install -r backend/requirements.txt
     - name: Run unit tests
-      run: python -m unittest discover -s backend/tests -p 'test_lambda_function.py'
+      run: python -m unittest backend/tests/test_lambda_function.py
