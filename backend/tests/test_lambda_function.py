@@ -7,7 +7,6 @@ import json
 # Import the lambda_handler from your original Lambda function file
 from backend.LambdaFunctionOverHttps import lambda_handler
 
-
 @mock_dynamodb2
 class TestLambdaFunction(unittest.TestCase):
     def setUp(self):
@@ -23,13 +22,21 @@ class TestLambdaFunction(unittest.TestCase):
         self.table = self.dynamodb.Table(self.table_name)
         self.table.put_item(Item={'id': 'visits', 'count': 0})
 
-    def test_lambda_handler(self):
-        response = lambda_handler({}, None)
-        body = response['body']  # Remove the json.loads() call
+    def test_post_request(self):
+        event = {'httpMethod': 'POST'}
+        response = lambda_handler(event, None)
+        body = response['body']
 
         self.assertEqual(response['statusCode'], 200)
-        self.assertEqual(body, "Visitor count: 1")
+        self.assertEqual(body, "1")
 
+    def test_get_request(self):
+        event = {'httpMethod': 'GET'}
+        response = lambda_handler(event, None)
+        body = response['body']
+
+        self.assertEqual(response['statusCode'], 200)
+        self.assertEqual(body, "0")
 
 if __name__ == '__main__':
     unittest.main()
