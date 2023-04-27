@@ -13,6 +13,13 @@ class TestLambdaFunction(unittest.TestCase):
         self.dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
         self.table_name = 'lambda-apigateway'
 
+        # Delete the table if it already exists
+        try:
+            self.dynamodb.Table(self.table_name).delete()
+        except self.dynamodb.meta.client.exceptions.ResourceNotFoundException:
+            pass
+
+        # Create the table
         self.dynamodb.create_table(
             TableName=self.table_name,
             KeySchema=[{'AttributeName': 'id', 'KeyType': 'HASH'}],
