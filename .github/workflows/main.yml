@@ -1,4 +1,4 @@
-name: Python Unit Tests
+name: Python Unit Tests and Cypress Tests
 
 on:
   push:
@@ -23,7 +23,18 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'
-    - name: Install dependencies
+    - name: Install Python dependencies
       run: pip install -r backend/requirements.txt
-    - name: Run unit tests
+    - name: Run Python unit tests
       run: python -m unittest backend/tests/test_lambda_function.py
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
+    - name: Install JavaScript dependencies
+      run: npm ci
+    - name: Install Cypress dependencies
+      run: npm install cypress --save-dev
+    - name: Run Cypress tests
+      run: npx cypress run
