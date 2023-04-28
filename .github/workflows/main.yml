@@ -37,4 +37,4 @@ jobs:
     - name: Install Cypress dependencies
       run: npm install cypress --save-dev
     - name: Run Cypress tests
-      run: npx cypress run
+      run: npx cypress run --config integrationFolder=tests/cypress/integration
