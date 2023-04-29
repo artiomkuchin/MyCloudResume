@@ -1,4 +1,4 @@
-name: Python Unit Tests and Cypress Tests
+name: Python Unit Tests
 
 on:
   push:
@@ -27,18 +27,3 @@ jobs:
       run: pip install -r backend/requirements.txt
     - name: Run Python unit tests
       run: python -m unittest backend/tests/test_lambda_function.py
-
-name: Cypress tests
-on: push
-jobs:
-  cypress-run:
-    name: Cypress run
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Cypress run
-        uses: cypress-io/github-action@v5
-        with:
-          spec: tests\cypress\integration\API_and_200_test.cy.js
