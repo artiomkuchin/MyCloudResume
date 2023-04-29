@@ -13,4 +13,4 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
-          spec: tests\cypress\integration\API_and_200_test.cy.js
+          spec: tests/cypress/integration/API_and_200_test.cy.js
