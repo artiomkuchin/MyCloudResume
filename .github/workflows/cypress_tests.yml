@@ -15,3 +15,5 @@ jobs:
         with:
           spec: tests/cypress/integration/API_and_200_test.cy.js
           config-file: tests/cypress/cypress.config.js
+      - name: Run Cypress tests
+        run: npx cypress run
