@@ -28,13 +28,17 @@ jobs:
     - name: Run Python unit tests
       run: python -m unittest backend/tests/test_lambda_function.py
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 14
-    - name: Install JavaScript dependencies
-      run: npm ci
-    - name: Install Cypress dependencies
-      run: npm install cypress --save-dev
-    - name: Run Cypress tests
-      run: npx cypress run --config integrationFolder=tests/cypress/integration
+name: Cypress tests
+on: push
+jobs:
+  cypress-run:
+    name: Cypress run
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          spec: tests\cypress\integration\API_and_200_test.cy.js
