@@ -2,7 +2,7 @@
   "devDependencies": {
     "cypress": "^12.10.0"
   },
-  "name": "cypress",
+  "name": "my-cypress-project",
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
