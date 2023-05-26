@@ -4,12 +4,10 @@ import logging
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-
 def lambda_handler(event, context):
     dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
-    table = dynamodb.Table('lambda-apigateway')
+    table = dynamodb.Table('lambda-apigateway-ddb')
 
-    # http_method = event.get('httpMethod', 'GET')
     http_method = event['httpMethod']
 
     logger.info(f'HTTP Method: {http_method}')
