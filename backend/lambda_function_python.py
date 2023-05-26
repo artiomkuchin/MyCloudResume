@@ -6,7 +6,7 @@ logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
     dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
-    table = dynamodb.Table('lambda-apigateway-ddb')
+    table = dynamodb.Table('lambda-apigateway')
 
     http_method = event['httpMethod']
 
