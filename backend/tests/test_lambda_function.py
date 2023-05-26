@@ -5,7 +5,7 @@ import boto3
 import json
 
 # Import the lambda_handler from your original Lambda function file
-from backend.LambdaFunctionOverHttps import lambda_handler
+from backend.lambda_function_python import lambda_handler
 
 @mock_dynamodb2
 class TestLambdaFunction(unittest.TestCase):
