@@ -331,8 +331,8 @@ resource "aws_cloudfront_distribution" "cdn_distribution" {
     origin_path = "/prod"
   }
   origin {
-    domain_name = "artkuch.com.s3.us-east-1.amazonaws.com"
-    origin_id   = "artkuch.com.s3-website-us-east-1.amazonaws.com"
+    domain_name              = "artkuch.com.s3.us-east-1.amazonaws.com"
+    origin_id                = "artkuch.com.s3-website-us-east-1.amazonaws.com"
     origin_path              = ""
     origin_access_control_id = aws_cloudfront_origin_access_control.oac.id
   }
