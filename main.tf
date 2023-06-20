@@ -22,14 +22,6 @@ resource "aws_s3_bucket" "main_s3" {
   }
 }
 
-# Upload frontend content to s3 config block
-resource "aws_s3_object" "s3upload" {
-  for_each = fileset("./frontend/", "**")
-  bucket   = aws_s3_bucket.main_s3.id
-  key      = each.value
-  source   = "./frontend/${each.value}"
-  etag     = filemd5("./frontend/${each.value}")
-}
 locals {
   mime_types = {
     ".html" = "text/html"
