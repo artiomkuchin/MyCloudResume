@@ -1,3 +1,5 @@
+![MCR-diagram](https://github.com/artiomkuchin/MyCloudResume/assets/113947546/8cdbcb1e-6ae6-47f4-b7fb-ebc45a19d5c6)
+
 ## Tasks
 
 * **Certification**
@@ -27,4 +29,3 @@
 * **CI/CD**
   * Used GitHub Actions to automate the CI/CD process.
  
-    
